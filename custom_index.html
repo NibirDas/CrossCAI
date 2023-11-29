@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom</title>
+</head>
+<body>
+    <h1>Custom</h1>
+
+    <form method="post" action="/" enctype="multipart/form-data">
+        <label for="codon_file">Upload CSV File:</label>
+        <input type="file" name="codon_file" accept=".csv" required>
+
+        <label for="target_cai">Target CAI Value:</label>
+        <input type="number" step="0.01" name="target_cai" required>
+
+        <label for="default_cai_range">Default CAI Range:</label>
+        <input type="text" name="default_cai_range" placeholder="e.g., 0.8 - 1.0" required>
+
+        <h4>Enter DNA Sequence:</h3>
+        <input type="text" id="sequence" name="sequence" required>   
+
+        <button type="submit">Optimize</button>
+    </form>
+
+    <h2>RESULT: <span id="status"></span></h2>
+    
+    {% if status == 'success' %}
+        <h2>Optimized Sequence:</h2>
+        <p id="optimized-sequence">{{ optimized_sequence }}</p>
+        <h2>Optimized CAI:</h2>
+        <p id="optimized-cai">{{ optimized_cai }}</p>
+{% endif %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        try 
+        {
+            const response = await fetch('/', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                        const result = await response.text();
+                        document.getElementById('status').innerText = result;
+
+                        // Display other information as needed
+                        if (result.status === 'success') {
+                            document.getElementById('optimized-sequence').innerText = result.optimized_sequence;
+                            document.getElementById('optimized-cai').innerText = result.optimized_cai;
+
+                        } else if (result.status === 'error') {
+                            document.getElementById('error-message').innerText = result.message;
+                        }
+                    } else {
+                        throw new Error('Failed to upload data');
+                    }
+            }
+            catch (error) 
+            {
+            console.error(error);
+            document.getElementById('status').innerText = 'Error uploading data';
+            document.getElementById('error-message').innerText = error.message;
+            }
+    });
+});
+    </script>
+</body>
+</html>
