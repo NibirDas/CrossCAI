@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style3.css') }}">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- GOOGKE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100&display=swap" rel="stylesheet">
+    <!--     googke fonts   -->
+    <title>CrossCAI</title>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <nav class="navbar">
+        <a href="index.html""><i class='bx bxs-home'></i></a>
+        <a href="contact.html""><i class='bx bxs-contact'></i></a>
+    </nav>
+    <div class="glass">
+        <div class="card">
+            <form method="post" action="{{ url_for('index') }}">
+            <div class="content">
+                <h3>Choose Organism:</h3>
+                <select id="organism" name="organism" required>
+                    <option value="human">Default</option>
+                    <option value="human">Human</option>
+                    <option value="wolf">Wolf</option>
+                    <option value="cow">Cow</option>
+                    <option value="mushroom">Common Mushroom</option>
+                    <option value="gorilla">Gorilla</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <div class="dna">
+                    <h4>Enter DNA Sequence:</h3>
+                    <input type="text" id="sequence" name="sequence" placeholder="Sequence" required>           
+                </div>
+                <button type="submit">Optimize</button>
+            </div>  
+            </form>
+            <div class="back">
+                <div class="target">
+                    <h2>RESULT</h2>
+                    <h3 for="target_cai">Target CAI:</h3>
+                    <input type="range" id="target_cai" name="target_cai" min="0" max="10" value="{{ optimized_cai }}*10" disabled>
+                    <br>
+                    <output for="target_cai" id="target_cai_value">{{ default_target_cai[0] }} - {{ default_target_cai[1] }}</output>
+                </div>
+                        
+                <div class="res">
+                    {% if optimized_sequence %}
+                    <h2>Optimized Sequence:</h2>
+                    <p>{{ optimized_sequence }}</p>
+                    <h2>Optimized CAI:</h2>
+                    <p>{{ optimized_cai }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

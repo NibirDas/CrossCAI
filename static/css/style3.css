@@ -1,0 +1,77 @@
+body{
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+#particles-js{
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    position: fixed;
+}
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;    
+}
+.navbar i{
+    padding: 10px;
+    color: #E3D87E;
+    font-size: 20px;
+    border: 2px solid #E3D87E;
+    border-radius: 50px;
+    margin: 10px;
+    cursor: pointer;
+
+}
+.card{
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+}
+
+.card .content select{
+    padding: 15px;
+    border-radius: 50px;
+    text-align: center;
+}
+.card .content select option{
+    text-align: center;
+}
+.card input{
+    padding: 15px;
+    border-radius:50px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.card button{
+    padding: 10px;
+    width: 150px;
+    border-radius: 90px;
+}
+.back{
+    margin-top: 50px;
+}
+
+.res{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Set the height to 100% of the viewport height */
+}
+.res p{
+    align-items: center;
+    justify-content: center;
+    background-color: #E3D87E;
+    border: #E3D87E solid;
+    color: black;
+    border-radius: 50px;
+    width: 400px;
+    padding: 10px;
+}
+
