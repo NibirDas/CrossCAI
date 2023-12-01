@@ -1,10 +1,6 @@
 import random
 from flask import Flask, render_template, request
-
-
 app = Flask(__name__)
-
-
 organism_data = {
     'custom': {
         'codon_usage': {
