@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- GOOGKE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100&display=swap" rel="stylesheet">
+    <!--     googke fonts   -->
+    <title>CrossCAI</title>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <nav class="navbar">
+        <a href="https://cross-cai.onrender.com"><i class='bx bxs-home'></i></a>
+        <a href="https://contact-cai.onrender.com/"><i class='bx bxs-contact'></i></a>
+    </nav>
+    <h1>Custom</h1>
+    <div class="glass"></div>
+        <form method="post" action="/" enctype="multipart/form-data">
+            <label for="codon_file">Upload CSV File:</label>
+            <input type="file" name="codon_file" accept=".csv" required>
+            <br>
+            <label for="target_cai">Target CAI Value:</label>
+            <input type="number" step="0.01" name="target_cai" placeholder="e.g., 0.8" required>
+            <br>
+            <label for="default_cai_range">Default CAI Range:</label>
+            <input type="text" name="default_cai_range" placeholder="e.g., 0.8 - 1.0" required>
+            <br>
+            <h4>Enter DNA Sequence:</h3>
+            <input type="text" id="sequence" name="sequence" placeholder="e.g., ACCGTA" required>   
+            <br>
+            <button type="submit">Optimize</button>
+        </form>
+
+        <div class="res">
+            <h2>RESULT: <span id="status"></span></h2>
+                {% if status == 'success' %}
+                    <h2>Optimized Sequence:</h2>
+                    <p id="optimized-sequence">{{ optimized_sequence }}</p>
+                    <h2>Optimized CAI:</h2>
+                    <p id="optimized-cai">{{ optimized_cai }}</p>
+                {% endif %}
+        </div>
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+    <!-- GOOGKE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100&display=swap" rel="stylesheet">
+    <!--     googke fonts   -->
+    <title>CrossCAI</title>
+</head>
+    <div id="particles-js"></div>
+    <nav class="navbar">
+        <a href="https://cross-cai.onrender.com"><i class='bx bxs-home'></i></a>
+        <a href="https://contact-cai.onrender.com/"><i class='bx bxs-contact'></i></a>
+    </nav>
+    
+    <h1>USER FEEDBACK</h1>
+    <div class="con">
+        <form action="https://formsubmit.co/26bdf169c4d48554d88501269623c8f2" class="form" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+            <input type="hidden" name="_captcha" value="false">
+            <br>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
